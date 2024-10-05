@@ -1,6 +1,5 @@
 int idade
-print("Digite sua idade:")
-scanf("idade", &idade)
+idade = int(input("Digite sua idade"))
 if idade < 18:
   print("Permissão negada")
   print("Idade mínima 18")
