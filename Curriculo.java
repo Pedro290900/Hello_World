@@ -1,22 +1,40 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route("/faculdade")
-def func():
-  return 'UniLaSalle-RJ'
+@app.route("/faculdade", methods=["GET"])
+def faculdade():
+    return jsonify({
+        "faculdade": "UniLaSalle-RJ"
+    })
 
-@app.route("/Curso")
+@app.route("/curso", methods=["GET"])
 def curso():
-  return 'Sistemas de informação'
+    return jsonify({
+        "curso": "Sistemas de Informação"
+    })
 
-@app.route("/Aluno")
-def Aluno():
-  return 'Pedro Coutinho Duarte'
+@app.route("/aluno", methods=["GET"])
+def aluno():
+    return jsonify({
+        "aluno": "Pedro Coutinho Duarte"
+    })
 
-@app.route("/idiomas")
+@app.route("/idiomas", methods=["GET"])
 def idiomas():
-  return 'Inglês, Espanhol e Português'
-  
-if __name__ == '__main__':
-  app.run(debug=True)
+    return jsonify({
+        "idiomas": ["Inglês", "Espanhol", "Português"]
+    })
+
+# Rota agregada
+@app.route("/sobre", methods=["GET"])
+def sobre():
+    return jsonify({
+        "faculdade": "UniLaSalle-RJ",
+        "curso": "Sistemas de Informação",
+        "aluno": "Pedro Coutinho Duarte",
+        "idiomas": ["Inglês", "Espanhol", "Português"]
+    })
+
+if __name__ == "__main__":
+    app.run(debug=True)
